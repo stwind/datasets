@@ -107,7 +107,7 @@ class _Extractor(object):
       tf.io.gfile.rmtree(to_path)
     tf.io.gfile.rename(to_path_tmp, to_path)
     self._pbar_path.update(1)
-    return to_path
+    return utils.as_path(to_path)
 
 
 def _copy(src_file, dest_path):

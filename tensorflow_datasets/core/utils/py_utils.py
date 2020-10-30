@@ -365,9 +365,9 @@ def _get_incomplete_path(filename):
 
 
 @contextlib.contextmanager
-def incomplete_dir(dirname):
+def incomplete_dir(dirname: type_utils.PathLike) -> Iterator[str]:
   """Create temporary dir for dirname and rename on exit."""
-  tmp_dir = _get_incomplete_path(dirname)
+  tmp_dir = _get_incomplete_path(os.fspath(dirname))
   tf.io.gfile.makedirs(tmp_dir)
   try:
     yield tmp_dir
